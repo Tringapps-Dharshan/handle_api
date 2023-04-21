@@ -22,8 +22,8 @@ class _LoginPageState extends State<LoginPage> {
         body: Stack(
           fit: StackFit.expand,
           children: [
-            Image.network(
-              'https://cdn.wallpapersafari.com/37/31/qBVat0.jpg',
+            Image.asset(
+              'assets/bg.jpg',
               fit: BoxFit.cover,
               color: Colors.black.withOpacity(0.7),
               colorBlendMode: BlendMode.darken,
@@ -31,14 +31,16 @@ class _LoginPageState extends State<LoginPage> {
             Center(
               child: Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: SingleChildScrollView(
-                  child: Form(
-                    key: loginPage,
-                    child: Center(
-                      child: Card(
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
+                child: Form(
+                  key: loginPage,
+                  child: Center(
+                    child: Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: SizedBox(
+                          width: 300,
                           child: Column(
+                            mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -72,20 +74,15 @@ class _LoginPageState extends State<LoginPage> {
                               ElevatedButton(
                                 style: const ButtonStyle(
                                   padding: MaterialStatePropertyAll<EdgeInsets>(
-                                      EdgeInsets.fromLTRB(20, 10, 20, 10)),
+                                      EdgeInsets.all(10)),
                                 ),
                                 onPressed: () {
-                                  // Navigator.push(
-                                  //     context,
-                                  //     MaterialPageRoute(
-                                  //         builder: (context) =>
-                                  //             const HomePage()));
                                   Navigator.pushNamed(
                                       context, HomePage.routeName);
                                 },
                                 child: const Text(
                                   'Submit',
-                                  style: TextStyle(fontSize: 20),
+                                  style: TextStyle(fontSize: 15),
                                 ),
                               )
                             ],

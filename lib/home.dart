@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:handle_api/detail_screen.dart';
-import 'package:handle_api/passingData.dart';
+import 'package:handle_api/passing_data.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -37,7 +37,13 @@ class _HomePageState extends State<HomePage> {
         title: const Text('Fetch data from API'),
       ),
       body: data != null
-          ? ListView.builder(
+          ? ListView.separated(
+              separatorBuilder: (context, index) {
+                return const Divider(
+                  color: Colors.grey,
+                  height: 0,
+                );
+              },
               itemBuilder: (context, index) {
                 return ListTile(
                   tileColor: Colors.grey[100],
@@ -50,7 +56,6 @@ class _HomePageState extends State<HomePage> {
                   subtitle: Text(data[index]['email']),
                   contentPadding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
                   onTap: () {
-                    print(data[index]['address']['street']);
                     Navigator.pushNamed(
                       context,
                       DetailScreen.routeName,
@@ -73,7 +78,6 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                     );
-                    print(data[index]['name']);
                   },
                 );
               },
